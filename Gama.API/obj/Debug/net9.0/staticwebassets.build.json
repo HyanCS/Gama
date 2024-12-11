@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "7tnSJQ2fmtZ/k8p2ZrpRo+H5bEG1jYUxNakoPkn1udU=",
+  "Source": "Gama.API",
+  "BasePath": "_content/Gama.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

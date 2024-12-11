@@ -1,0 +1,6 @@
+@Gama.API_HostAddress = http://localhost:5272
+
+GET {{Gama.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
