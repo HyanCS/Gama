@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Gama.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6eeed748322df4a5797cade5329a713f3d285a5b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Gama.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Gama.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<Context>(
     options => options.UseSqlite(builder.Configuration["ConnectionStrings:GamaDbConnection"])
+    .LogTo(Console.WriteLine, LogLevel.Information)
 );
 
 // using (var context = new Context())
@@ -42,36 +43,62 @@ app.MapGet("/Customers", (Context context) =>
 
 .WithOpenApi();
 
-app.MapPost("/Customers", (Context context, Customer customer) =>
+app.MapGet("/Customers/{id}", (Context context, int id) =>
 {
-    context.Customers.Add(customer);
-    context.SaveChanges();
-
+    return context.Customers
+    .Where(customer => customer.Id == id);
 })
 
 .WithOpenApi();
 
+app.MapGet("/Customers/CustomerByName", (Context context, string name) =>
+{
+    return context.Customers
+    .Where(customer => customer.Name.Contains(name));
+})
+
+.WithOpenApi();
+
+app.MapPost("/Customers", (Context context, Customer customer) =>
+{
+    if (string.IsNullOrWhiteSpace(customer.Name) || string.IsNullOrWhiteSpace(customer.CustomerAddress))
+    {
+        return Results.BadRequest("Both 'Name' and 'Customer Address' are required fields.");
+    }
+
+    if (customer.Id != 0 && context.Customers.Any(customer => customer.Id == customer.Id))
+    {
+        return Results.Conflict($"A customer with Id {customer.Id} already exists.");
+    }
+
+    context.Customers.Add(customer);
+    context.SaveChanges();
+
+    return Results.Created($"/Customers/{customer.Id}", customer);
+})
+.WithOpenApi();
+
 app.MapPut("/Customers/{customerId}", (Context context, int customerId, Customer customerNew) =>
 {
-    var customer = context.Customers.Find(customerId);
+    var existingCustomer = context.Customers.Find(customerId);
 
-    if (customer == null)
+    if (existingCustomer == null)
     {
         return Results.NotFound($"Customer with ID {customerId} not found.");
     }
 
     if (!string.IsNullOrWhiteSpace(customerNew.Name))
     {
-        customer.Name = customerNew.Name;
+        existingCustomer.Name = customerNew.Name;
     }
 
     if (!string.IsNullOrWhiteSpace(customerNew.CustomerAddress))
     {
-        customer.CustomerAddress = customerNew.CustomerAddress;
+        existingCustomer.CustomerAddress = customerNew.CustomerAddress;
     }
 
     context.SaveChanges();
-    return Results.Ok(customer);
+    return Results.Ok(existingCustomer);
 
 })
 

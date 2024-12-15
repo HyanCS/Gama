@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eu\\Documents\\AirLiquideProject\\Gama\\Gama.API\\Gama.API.csproj": {}
+    "C:\\Users\\eu\\Documents\\GitHub\\Gama\\Gama.API\\Gama.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eu\\Documents\\AirLiquideProject\\Gama\\Gama.API\\Gama.API.csproj": {
+    "C:\\Users\\eu\\Documents\\GitHub\\Gama\\Gama.API\\Gama.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eu\\Documents\\AirLiquideProject\\Gama\\Gama.API\\Gama.API.csproj",
+        "projectUniqueName": "C:\\Users\\eu\\Documents\\GitHub\\Gama\\Gama.API\\Gama.API.csproj",
         "projectName": "Gama.API",
-        "projectPath": "C:\\Users\\eu\\Documents\\AirLiquideProject\\Gama\\Gama.API\\Gama.API.csproj",
+        "projectPath": "C:\\Users\\eu\\Documents\\GitHub\\Gama\\Gama.API\\Gama.API.csproj",
         "packagesPath": "C:\\Users\\eu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eu\\Documents\\AirLiquideProject\\Gama\\Gama.API\\obj\\",
+        "outputPath": "C:\\Users\\eu\\Documents\\GitHub\\Gama\\Gama.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\eu\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -45,6 +45,12 @@
           "targetAlias": "net9.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.0, )"
             },
